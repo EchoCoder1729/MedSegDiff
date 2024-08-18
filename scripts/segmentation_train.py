@@ -46,7 +46,7 @@ def main():
         tran_list = [transforms.Resize((args.image_size,args.image_size)),]
         transform_train = transforms.Compose(tran_list)
         ds = NumpyDataset(args.data_dir, transform_train)
-        args.in_ch = 1
+        args.in_ch = 3
     else :
         tran_list = [transforms.Resize((args.image_size,args.image_size)), transforms.ToTensor(),]
         transform_train = transforms.Compose(tran_list)
