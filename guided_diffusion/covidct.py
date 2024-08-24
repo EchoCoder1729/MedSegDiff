@@ -43,6 +43,7 @@ class NumpyDataset(Dataset):
 
         if mask.shape[0] != 4:
             mask = mask.permute(2,0,1)
+        mask = [:2,:,:]
 
         # Apply transformations
         if self.transform:
