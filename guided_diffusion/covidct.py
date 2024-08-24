@@ -41,8 +41,8 @@ class NumpyDataset(Dataset):
         elif image.ndim == 3 and image.shape[0] != 3:  # If the channel is not the first dimension
             image = image.permute(2, 0, 1)  # Reorder to (C, H, W)
 
-        if mask.ndim == 2:
-            mask = mask.unsqueeze(0)  # Add a channel dimension
+        if mask.shape[0] != 4:
+            mask = mask.permute(2,0,1)
 
         # Apply transformations
         if self.transform:
