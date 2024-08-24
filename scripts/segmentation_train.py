@@ -9,7 +9,7 @@ from guided_diffusion.bratsloader import BRATSDataset, BRATSDataset3D
 from guided_diffusion.isicloader import ISICDataset
 from guided_diffusion.covidct import NumpyDataset
 from guided_diffusion.custom_dataset_loader import CustomDataset
-from guided_diffusion.covidCTloader import NumpyDataset
+# from guided_diffusion.covidCTloader import NumpyDataset
 from guided_diffusion.script_util import (
     model_and_diffusion_defaults,
     create_model_and_diffusion,
