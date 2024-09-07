@@ -17,6 +17,7 @@ import torch.distributed as dist
 from guided_diffusion import dist_util, logger
 from guided_diffusion.bratsloader import BRATSDataset, BRATSDataset3D
 from guided_diffusion.isicloader import ISICDataset
+from guided_diffusion.covidct import NumpyDataset
 import torchvision.utils as vutils
 from guided_diffusion.utils import staple
 from guided_diffusion.script_util import (
@@ -58,6 +59,11 @@ def main():
 
         ds = BRATSDataset3D(args.data_dir,transform_test)
         args.in_ch = 5
+    elif args.data_name == 'COVIDCT':
+        tran_list = [transforms.Resize((args.image_size,args.image_size)),]
+        transform_train = transforms.Compose(tran_list)
+        ds = NumpyDataset(args.data_dir, transform_train)
+        args.in_ch = 3
     datal = th.utils.data.DataLoader(
         ds,
         batch_size=args.batch_size,
